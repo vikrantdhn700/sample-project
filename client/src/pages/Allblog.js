@@ -77,8 +77,8 @@ export const AllBlogs = () => {
     if(message) {
         if(message[0] === "success") {
             displayMsg = <p className="msg-success">{message[1]}</p>;
-        } else if(message[1] === "failed") {
-            displayMsg = <p className="msg-error">{message[1]}</p>;
+        } else if(message[0] === "failed") {
+            displayMsg = <p className="msg-error">{message[1]}</p>;            
         }
     }
 

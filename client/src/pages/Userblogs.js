@@ -122,6 +122,9 @@ export const Userblogs = () => {
             }).then((response)=> response.json())
             .then((data) => {
                 if(data.status === "failed") {
+                    if(data.message === "jwt expired") {
+                        window.location.replace('/auth/logout');
+                    }
                     setMessage(<p className="msg-error">{data.message}</p>);
                 } else if(data.status === "success") {
                     setSendData({limit, page}); 
@@ -219,7 +222,10 @@ export const Addblog = () => {
           }).then((response)=> response.json())
           .then((data) => {
             if(data.status === "failed") {
-              setMessage(<p className="msg-error">{data.message}</p>);
+                if(data.message === "jwt expired") {
+                    window.location.replace('/auth/logout');
+                }
+               setMessage(<p className="msg-error">{data.message}</p>);
             } else if(data.status === "success") {
               setMessage(<p className="msg-success">{data.message}</p>);
               e.target.reset();
@@ -297,6 +303,9 @@ export const EditBlog = () => {
                         setDisplayImage(<div className="img-bx"><NavLink to={blog_img} target="_blank"><img src={blog_img} className="img-small" alt=""/></NavLink> | <span><NavLink to={'#'} id="removeImg" onClick={deleteImage} target="_blank">Remove</NavLink></span></div>)
                     }
                 } else if(data.status === "failed"){
+                    if(data.message === "jwt expired") {
+                        window.location.replace('/auth/logout');
+                    }
                     setMessage(<p className="msg-error">{data.message}</p>);
                     setFlag(0)
                 }
@@ -336,6 +345,9 @@ export const EditBlog = () => {
             }).then((response)=> response.json())
             .then((data) => {
                 if(data.status === "failed") {
+                    if(data.message === "jwt expired") {
+                        window.location.replace('/auth/logout');
+                    }
                     setMessage(<p className="msg-error">{data.message}</p>);
                 } else if(data.status === "success") {
                     setDisplayImage(null)
@@ -365,6 +377,9 @@ export const EditBlog = () => {
             }).then((response)=> response.json())
             .then((data) => {
             if(data.status === "failed") {
+                if(data.message === "jwt expired") {
+                    window.location.replace('/auth/logout');
+                }
                 setMessage(<p className="msg-error">{data.message}</p>);
             } else if(data.status === "success") {
                 setMessage(<p className="msg-success">{data.message}</p>);
